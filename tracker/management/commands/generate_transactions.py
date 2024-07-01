@@ -26,10 +26,12 @@ class Command(BaseCommand):
         for category in categories:
             Category.objects.get_or_create(name=category)
 
-        # get the user 
-        user = User.objects.filter(username='admin').first()
+        # get the user
+        user = User.objects.filter(username="admin").first()
         if not user:
-            user = User.objects.create_superuser(username='admin', password='test')
+            user = User.objects.create_superuser(
+                username="admin", password="password@2024"
+            )
 
         categories = Category.objects.all()
         types = [x[0] for x in Transaction.TRANSACTION_TYPE_CHOICES]
@@ -38,6 +40,6 @@ class Command(BaseCommand):
                 category=random.choice(categories),
                 user=user,
                 amount=random.uniform(1, 2500),
-                date=fake.date_between(start_date='-1y', end_date='today'),
-                type=random.choice(types)
+                date=fake.date_between(start_date="-1y", end_date="today"),
+                type=random.choice(types),
             )
