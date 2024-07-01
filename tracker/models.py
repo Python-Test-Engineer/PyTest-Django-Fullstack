@@ -1,25 +1,22 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import User
 from .managers import TransactionQuerySet
-
-class User(AbstractUser):
-    pass
 
 
 class Category(models.Model):
     name = models.CharField(max_length=50, unique=True)
 
     class Meta:
-        verbose_name_plural = 'Categories'
+        verbose_name_plural = "Categories"
 
     def __str__(self):
         return self.name
-    
+
 
 class Transaction(models.Model):
     TRANSACTION_TYPE_CHOICES = (
-        ('income', 'Income'),
-        ('expense', 'Expense'),
+        ("income", "Income"),
+        ("expense", "Expense"),
     )
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -31,7 +28,7 @@ class Transaction(models.Model):
     objects = TransactionQuerySet.as_manager()
 
     def __str__(self):
-        return f"{self.type} of {self.amount} on {self.date} by {self.user}" 
+        return f"{self.type} of {self.amount} on {self.date} by {self.user}"
 
     class Meta:
-        ordering = ['-date']   
+        ordering = ["-date"]

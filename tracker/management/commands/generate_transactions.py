@@ -35,7 +35,7 @@ class Command(BaseCommand):
 
         categories = Category.objects.all()
         types = [x[0] for x in Transaction.TRANSACTION_TYPE_CHOICES]
-        for i in range(20):
+        for i in range(200):
             Transaction.objects.create(
                 category=random.choice(categories),
                 user=user,
