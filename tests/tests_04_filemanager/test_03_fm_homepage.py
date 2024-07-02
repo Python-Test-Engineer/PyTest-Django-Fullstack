@@ -1,4 +1,5 @@
 """Unit tests for Post model"""
+
 import json
 from http import HTTPStatus
 

@@ -1,4 +1,5 @@
 """Quick check of playwright functionality working..."""
+
 import os
 
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
@@ -19,7 +20,7 @@ class MyViewTests(StaticLiveServerTestCase):
         cls.browser.close()
         cls.playwright.stop()
 
-    def test_pl_login(self):
+    def test_AC012_pl_login(self):
         page = self.browser.new_page()
         page.goto(f"{self.live_server_url}/admin/")
         page.wait_for_selector("text=Django administration")

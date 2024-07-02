@@ -21,7 +21,7 @@ class ProfileTest(TestCase):
         )
 
 
-    def test_current_user_profile_exists(self):
+    def test_AC001_Current_user_profile_exists(self):
         self.client.login( username=self.username,password=self.password)
         response = self.client.get(self.url)
 
@@ -29,7 +29,7 @@ class ProfileTest(TestCase):
         self.assertTemplateUsed(response, self.template_name)
 
 
-    def test_current_user_profile_requires_login(self):
+    def test_AC002_current_user_profile_requires_login(self):
         response = self.client.get(self.url)
 
         self.assertEqual(response.status_code,HTTPStatus.FOUND)

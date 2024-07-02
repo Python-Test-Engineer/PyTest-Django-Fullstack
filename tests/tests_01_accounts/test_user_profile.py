@@ -23,7 +23,7 @@ class UpdateProfileTest(TestCase):
             password=self.password
         )
 
-    def test_profile_update_page_exists(self):
+    def test_AC010_profile_update_page_exists(self):
         self.client.login(username=self.username,password=self.password)
         response = self.client.get(self.url)
 
@@ -37,7 +37,7 @@ class UpdateProfileTest(TestCase):
         self.assertIsInstance(user_form,UserUpdateForm)
 
 
-    def test_profile_and_user_update_forms_update_users(self):
+    def test_AC011_profile_and_user_update_forms_update_users(self):
         
         request = HttpRequest()
 
